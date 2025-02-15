@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@kokoro-calendar/core": "~3.10.0",
-    "svelte": "^4.2.19"
+    "svelte": "^5.0.0"
   }
 }

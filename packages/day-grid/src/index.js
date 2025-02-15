@@ -1,13 +1,13 @@
-import {writable} from 'svelte/store';
-import {btnTextMonth, intl, themeView} from '@event-calendar/core';
-import {days} from './stores.js';
+import { writable } from 'svelte/store';
+import { btnTextMonth, intl, themeView } from '@kokoro-calendar/core';
+import { days } from './stores.js';
 import View from './View.svelte';
 
 export default {
     createOptions(options) {
         options.dayMaxEvents = false;
-        options.dayCellFormat = {day: 'numeric'};
-        options.dayPopoverFormat = {month: 'long', day: 'numeric', year: 'numeric'};
+        options.dayCellFormat = { day: 'numeric' };
+        options.dayPopoverFormat = { month: 'long', day: 'numeric', year: 'numeric' };
         options.moreLinkContent = undefined;
         // Common options
         options.buttonText.dayGridMonth = 'month';
@@ -22,12 +22,12 @@ export default {
         options.views.dayGridMonth = {
             buttonText: btnTextMonth,
             component: View,
-            dayHeaderFormat: {weekday: 'short'},
-            dayHeaderAriaLabelFormat: {weekday: 'long'},
+            dayHeaderFormat: { weekday: 'short' },
+            dayHeaderAriaLabelFormat: { weekday: 'long' },
             displayEventEnd: false,
-            duration: {months: 1},
+            duration: { months: 1 },
             theme: themeView('ec-day-grid ec-month-view'),
-            titleFormat: {year: 'numeric', month: 'long'}
+            titleFormat: { year: 'numeric', month: 'long' }
         };
     },
 

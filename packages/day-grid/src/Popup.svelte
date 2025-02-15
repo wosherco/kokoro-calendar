@@ -1,6 +1,6 @@
 <script>
     import {getContext, tick} from 'svelte';
-    import {ancestor, rect, setContent, outsideEvent, keyEnter, toISOString} from '@event-calendar/core';
+    import {ancestor, rect, setContent, outsideEvent, keyEnter, toISOString} from '@kokoro-calendar/core';
     import Event from './Event.svelte';
 
     let {buttonText, theme, _interaction, _intlDayPopover, _popupDate, _popupChunks} = getContext('state');

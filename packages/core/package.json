@@ -1,5 +1,5 @@
 {
-  "name": "@event-calendar/core",
+  "name": "@kokoro-calendar/core",
   "version": "3.10.0",
   "title": "Event Calendar Core package",
   "description": "Full-sized drag & drop event calendar with resource & timeline views",

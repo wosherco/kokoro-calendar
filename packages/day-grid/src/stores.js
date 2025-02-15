@@ -1,5 +1,5 @@
-import {derived} from 'svelte/store';
-import {cloneDate, addDay, subtractDay} from '@event-calendar/core';
+import { derived } from 'svelte/store';
+import { cloneDate, addDay, subtractDay } from '@kokoro-calendar/core';
 
 export function days(state) {
     return derived([state.date, state.firstDay, state.hiddenDays], ([$date, $firstDay, $hiddenDays]) => {

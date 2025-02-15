@@ -11,7 +11,7 @@
         resourceTextColor,
         task,
         isFunction
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
 
     export let chunk;
 

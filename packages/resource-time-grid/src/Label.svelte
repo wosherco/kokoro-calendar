@@ -1,6 +1,6 @@
 <script>
     import {getContext, onMount, afterUpdate, createEventDispatcher} from 'svelte';
-    import {setContent, toLocalDate, isFunction} from '@event-calendar/core';
+    import {setContent, toLocalDate, isFunction} from '@kokoro-calendar/core';
 
     export let resource;
     export let date = undefined;

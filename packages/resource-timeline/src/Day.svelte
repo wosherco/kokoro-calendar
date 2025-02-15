@@ -2,7 +2,7 @@
     import {getContext} from 'svelte';
     import {
         addDuration, ceil, cloneDate, datesEqual, floor, max, outsideRange, rect, runReposition, setPayload, toSeconds
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import {getSlotTimeLimits} from './lib.js';
     import Event from './Event.svelte';
 

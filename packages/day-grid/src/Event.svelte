@@ -18,7 +18,7 @@
         rect,
         bgEvent,
         isFunction
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
 
     export let chunk;
     export let longChunks = {};

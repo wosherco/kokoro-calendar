@@ -13,7 +13,7 @@
         resourceTextColor,
         task, height, toSeconds,
         isFunction, subtractDuration, cloneDate
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import {repositionEvent} from './lib.js';
 
     export let chunk;

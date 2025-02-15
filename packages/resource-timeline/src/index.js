@@ -1,6 +1,6 @@
-import {writable} from 'svelte/store';
-import {btnTextDay, btnTextMonth, btnTextWeek, themeView, viewResources} from '@event-calendar/core';
-import {dayTimeLimits, dayTimes, nestedResources} from './stores.js';
+import { writable } from 'svelte/store';
+import { btnTextDay, btnTextMonth, btnTextWeek, themeView, viewResources } from '@kokoro-calendar/core';
+import { dayTimeLimits, dayTimes, nestedResources } from './stores.js';
 import View from './View.svelte';
 
 export default {
@@ -18,17 +18,17 @@ export default {
 			buttonText: btnTextDay,
 			component: View,
 			displayEventEnd: false,
-			dayHeaderFormat: {weekday: 'long'},
-			duration: {days: 1},
+			dayHeaderFormat: { weekday: 'long' },
+			duration: { days: 1 },
 			slotDuration: '01:00',
 			theme: themeView('ec-timeline ec-resource-day-view'),
-			titleFormat: {year: 'numeric', month: 'long', day: 'numeric'}
+			titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
 		};
 		options.views.resourceTimelineWeek = {
 			buttonText: btnTextWeek,
 			component: View,
 			displayEventEnd: false,
-			duration: {weeks: 1},
+			duration: { weeks: 1 },
 			slotDuration: '01:00',
 			theme: themeView('ec-timeline ec-resource-week-view')
 		};
@@ -40,10 +40,10 @@ export default {
 				weekday: 'short',
 				day: 'numeric'
 			},
-			duration: {months: 1},
-			slotDuration: {days: 1},
+			duration: { months: 1 },
+			slotDuration: { days: 1 },
 			theme: themeView('ec-timeline ec-resource-month-view'),
-			titleFormat: {year: 'numeric', month: 'long'}
+			titleFormat: { year: 'numeric', month: 'long' }
 		};
 	},
 

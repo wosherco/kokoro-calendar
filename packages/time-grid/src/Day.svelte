@@ -3,7 +3,7 @@
     import {
         addDuration, bgEvent, cloneDate, createEventChunk, datesEqual, eventIntersects, floor, outsideRange, rect,
         setPayload
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import {groupEventChunks} from './utils';
     import Event from './Event.svelte';
     import NowIndicator from './NowIndicator.svelte';

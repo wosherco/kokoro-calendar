@@ -23,7 +23,7 @@ function setVersion(dir) {
 
     json.version = version;
     for (let name of packages) {
-        name = '@event-calendar/' + name;
+        name = '@kokoro-calendar/' + name;
         if (json.dependencies && json.dependencies[name]) {
             json.dependencies[name] = '~' + version;
         }

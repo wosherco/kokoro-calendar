@@ -3,7 +3,7 @@
     import {
         addDay, assign, cloneDate, createEventChunk, datesEqual, getWeekNumber, isFunction, keyEnter, outsideRange,
         runReposition, setContent, setPayload, toISOString, toLocalDate
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import Event from './Event.svelte';
     import Popup from './Popup.svelte';
 

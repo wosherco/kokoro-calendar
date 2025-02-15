@@ -1,6 +1,6 @@
 <script>
     import {getContext, afterUpdate} from 'svelte';
-    import {max} from '@event-calendar/core';
+    import {max} from '@kokoro-calendar/core';
     import Label from './Label.svelte';
     import Expander from './Expander.svelte';
 

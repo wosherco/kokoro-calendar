@@ -3,7 +3,7 @@
     import {
         bgEvent, createEventClasses, createEventContent, ghostEvent, helperEvent, isFunction, keyEnter, max,
         resourceBackgroundColor, resourceTextColor, setContent, task, toEventWithLocalDates, toViewWithLocalDates
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
 
     export let date;
     export let chunk;

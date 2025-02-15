@@ -8,9 +8,9 @@ import scss from 'rollup-plugin-scss';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import {writeFileSync} from 'fs';
+import { writeFileSync } from 'fs';
 import pkg from './package.json' with {type: 'json'};
-import {spawn} from 'child_process';
+import { spawn } from 'child_process';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -47,7 +47,7 @@ export default [
             format: 'es',
             file: 'packages/interaction/index.js'
         },
-        external: ['@event-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
+        external: ['@kokoro-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
         plugins: [
             svelte({
                 compilerOptions: {
@@ -64,7 +64,7 @@ export default [
             format: 'es',
             file: 'packages/day-grid/index.js'
         },
-        external: ['@event-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
+        external: ['@kokoro-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
         plugins: [
             svelte({
                 compilerOptions: {
@@ -81,7 +81,7 @@ export default [
             format: 'es',
             file: 'packages/list/index.js'
         },
-        external: ['@event-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
+        external: ['@kokoro-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
         plugins: [
             svelte({
                 compilerOptions: {
@@ -98,7 +98,7 @@ export default [
             format: 'es',
             file: 'packages/time-grid/index.js'
         },
-        external: ['@event-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
+        external: ['@kokoro-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
         plugins: [
             svelte({
                 compilerOptions: {
@@ -115,7 +115,7 @@ export default [
             format: 'es',
             file: 'packages/resource-time-grid/index.js'
         },
-        external: ['@event-calendar/core', '@event-calendar/time-grid', 'svelte', 'svelte/internal', 'svelte/store'],
+        external: ['@kokoro-calendar/core', '@kokoro-calendar/time-grid', 'svelte', 'svelte/internal', 'svelte/store'],
         plugins: [
             svelte({
                 compilerOptions: {
@@ -132,7 +132,7 @@ export default [
             format: 'es',
             file: 'packages/resource-timeline/index.js'
         },
-        external: ['@event-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
+        external: ['@kokoro-calendar/core', 'svelte', 'svelte/internal', 'svelte/store'],
         plugins: [
             svelte({
                 compilerOptions: {

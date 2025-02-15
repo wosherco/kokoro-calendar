@@ -1,6 +1,6 @@
 <script>
     import {getContext} from 'svelte';
-    import {datesEqual, outsideRange, runReposition, setPayload} from '@event-calendar/core';
+    import {datesEqual, outsideRange, runReposition, setPayload} from '@kokoro-calendar/core';
     import Event from './Event.svelte';
 
     export let date;

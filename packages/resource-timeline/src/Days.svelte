@@ -3,7 +3,7 @@
     import {
         addDay, addDuration, bgEvent, ceil, cloneDate, createEventChunk, DAY_IN_SECONDS, debounce, eventIntersects,
         limitToRange, max, runReposition
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import {getSlotTimeLimits, prepareEventChunks} from './lib.js';
     import Day from './Day.svelte';
 

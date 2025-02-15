@@ -1,5 +1,5 @@
 {
-  "name": "@event-calendar/time-grid",
+  "name": "@kokoro-calendar/time-grid",
   "version": "3.10.0",
   "title": "Event Calendar TimeGrid plugin",
   "description": "Full-sized drag & drop event calendar with resource & timeline views",
@@ -27,7 +27,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@event-calendar/core": "~3.10.0",
+    "@kokoro-calendar/core": "~3.10.0",
     "svelte": "^4.2.19"
   }
 }

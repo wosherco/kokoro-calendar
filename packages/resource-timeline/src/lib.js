@@ -5,7 +5,7 @@ import {
     datesEqual, max,
     sortEventChunks,
     toSeconds
-} from '@event-calendar/core';
+} from '@kokoro-calendar/core';
 
 export function prepareEventChunks(chunks, $_viewDates, $_dayTimeLimits, $slotDuration) {
     let longChunks = {};
@@ -142,5 +142,5 @@ export function repositionEvent(chunk, dayChunks, longChunks, height, allDay) {
 }
 
 export function getSlotTimeLimits($_dayTimeLimits, date) {
-    return $_dayTimeLimits[date.getTime()] ?? {min: createDuration(0), max: createDuration(0)};
+    return $_dayTimeLimits[date.getTime()] ?? { min: createDuration(0), max: createDuration(0) };
 }

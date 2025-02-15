@@ -1,6 +1,6 @@
 <script>
     import {getContext} from 'svelte';
-    import {setContent, toISOString, toSeconds} from '@event-calendar/core';
+    import {setContent, toISOString, toSeconds} from '@kokoro-calendar/core';
 
     let {_headerEl, _intlDayHeader, _intlDayHeaderAL, _dayTimes, _viewDates, slotDuration, theme} = getContext('state');
 </script>

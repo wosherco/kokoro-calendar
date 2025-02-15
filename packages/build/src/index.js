@@ -1,11 +1,11 @@
-import Calendar from '@event-calendar/core';
-import DayGrid from '@event-calendar/day-grid';
-import List from '@event-calendar/list';
-import TimeGrid from '@event-calendar/time-grid';
-import ResourceTimeGrid from '@event-calendar/resource-time-grid';
-import ResourceTimeline from '@event-calendar/resource-timeline';
-import Interaction from '@event-calendar/interaction';
-import '@event-calendar/core/index.css';
+import Calendar from '@kokoro-calendar/core';
+import DayGrid from '@kokoro-calendar/day-grid';
+import List from '@kokoro-calendar/list';
+import TimeGrid from '@kokoro-calendar/time-grid';
+import ResourceTimeGrid from '@kokoro-calendar/resource-time-grid';
+import ResourceTimeline from '@kokoro-calendar/resource-timeline';
+import Interaction from '@kokoro-calendar/interaction';
+import '@kokoro-calendar/core/index.css';
 
 export default class extends Calendar {
     constructor(el, options) {

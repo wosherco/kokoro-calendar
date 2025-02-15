@@ -1,6 +1,6 @@
 <script>
     import {getContext} from 'svelte';
-    import {getPayload, identity} from '@event-calendar/core';
+    import {getPayload, identity} from '@kokoro-calendar/core';
 
     export let resource;
 

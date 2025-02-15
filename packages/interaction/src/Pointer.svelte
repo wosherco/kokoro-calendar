@@ -1,6 +1,6 @@
 <script>
     import {getContext} from 'svelte';
-    import {addDuration, cloneDate, getElementWithPayload, getPayload} from '@event-calendar/core';
+    import {addDuration, cloneDate, getElementWithPayload, getPayload} from '@kokoro-calendar/core';
 
     let {_iEvents, slotDuration} = getContext('state');
 

@@ -1,5 +1,5 @@
-import {writable} from 'svelte/store';
-import {noop} from '@event-calendar/core';
+import { writable } from 'svelte/store';
+import { noop } from '@kokoro-calendar/core';
 import Auxiliary from './Auxiliary.svelte';
 
 export default {

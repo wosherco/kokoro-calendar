@@ -1,4 +1,4 @@
-import {btnTextDay, btnTextWeek, btnTextMonth, btnTextYear, intl, themeView} from '@event-calendar/core';
+import { btnTextDay, btnTextWeek, btnTextMonth, btnTextYear, intl, themeView } from '@kokoro-calendar/core';
 import View from './View.svelte';
 
 export default {
@@ -8,8 +8,8 @@ export default {
 		options.buttonText.listWeek = 'list';
 		options.buttonText.listMonth = 'list';
 		options.buttonText.listYear = 'list';
-		options.listDayFormat = {weekday: 'long'};
-		options.listDaySideFormat = {year: 'numeric', month: 'long', day: 'numeric'};
+		options.listDayFormat = { weekday: 'long' };
+		options.listDaySideFormat = { year: 'numeric', month: 'long', day: 'numeric' };
 		options.noEventsClick = undefined;  // ec option
 		options.noEventsContent = 'No events';
 		options.theme.daySide = 'ec-day-side';
@@ -19,25 +19,25 @@ export default {
 		options.views.listDay = {
 			buttonText: btnTextDay,
 			component: View,
-			duration: {days: 1},
+			duration: { days: 1 },
 			theme: themeView('ec-list ec-day-view')
 		};
 		options.views.listWeek = {
 			buttonText: btnTextWeek,
 			component: View,
-			duration: {weeks: 1},
+			duration: { weeks: 1 },
 			theme: themeView('ec-list ec-week-view')
 		};
 		options.views.listMonth = {
 			buttonText: btnTextMonth,
 			component: View,
-			duration: {months: 1},
+			duration: { months: 1 },
 			theme: themeView('ec-list ec-month-view')
 		};
 		options.views.listYear = {
 			buttonText: btnTextYear,
 			component: View,
-			duration: {years: 1},
+			duration: { years: 1 },
 			theme: themeView('ec-list ec-year-view')
 		};
 	},

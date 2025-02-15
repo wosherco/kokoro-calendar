@@ -1,5 +1,5 @@
 {
-  "name": "@event-calendar/interaction",
+  "name": "@kokoro-calendar/interaction",
   "version": "3.10.0",
   "title": "Event Calendar Interaction plugin",
   "description": "Full-sized drag & drop event calendar with resource & timeline views",
@@ -27,7 +27,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@event-calendar/core": "~3.10.0",
+    "@kokoro-calendar/core": "~3.10.0",
     "svelte": "^4.2.19"
   }
 }

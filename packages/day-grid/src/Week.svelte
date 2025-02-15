@@ -3,7 +3,7 @@
     import {
         addDay, bgEvent, cloneDate, createEventChunk, debounce, eventIntersects, limitToRange, prepareEventChunks,
         runReposition
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import Day from './Day.svelte';
 
     export let dates;

@@ -1,5 +1,5 @@
-import {btnTextDay, btnTextWeek, themeView, viewResources} from '@event-calendar/core';
-import TimeGrid from '@event-calendar/time-grid';
+import { btnTextDay, btnTextWeek, themeView, viewResources } from '@kokoro-calendar/core';
+import TimeGrid from '@kokoro-calendar/time-grid';
 import View from './View.svelte';
 
 export default {
@@ -12,13 +12,13 @@ export default {
         options.views.resourceTimeGridDay = {
             buttonText: btnTextDay,
             component: View,
-            duration: {days: 1},
+            duration: { days: 1 },
             theme: themeView('ec-time-grid ec-resource-day-view')
         };
         options.views.resourceTimeGridWeek = {
             buttonText: btnTextWeek,
             component: View,
-            duration: {weeks: 1},
+            duration: { weeks: 1 },
             theme: themeView('ec-time-grid ec-resource-week-view')
         };
     },

@@ -1,5 +1,5 @@
-import {derived} from 'svelte/store';
-import {createSlotTimeLimits, createTimes, getPayload} from '@event-calendar/core';
+import { derived } from 'svelte/store';
+import { createSlotTimeLimits, createTimes, getPayload } from '@kokoro-calendar/core';
 
 // slotTimeLimits per day
 export function dayTimeLimits(state) {

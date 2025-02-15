@@ -3,7 +3,7 @@
     import {
         addDay, bgEvent, cloneDate, createEventChunk, datesEqual, eventIntersects, outsideRange, setContent, setPayload,
         sortEventChunks, toISOString
-    } from '@event-calendar/core';
+    } from '@kokoro-calendar/core';
     import Event from './Event.svelte';
 
     export let date;

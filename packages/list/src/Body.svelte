@@ -1,6 +1,6 @@
 <script>
     import {getContext} from 'svelte';
-    import {addDay, cloneDate, toViewWithLocalDates, setContent, bgEvent, isFunction} from '@event-calendar/core';
+    import {addDay, cloneDate, toViewWithLocalDates, setContent, bgEvent, isFunction} from '@kokoro-calendar/core';
     import Day from './Day.svelte';
 
     let {_bodyEl, _events, _view, _viewDates, noEventsClick, noEventsContent, theme} = getContext('state');

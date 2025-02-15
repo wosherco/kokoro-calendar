@@ -1,7 +1,7 @@
 <script>
     import {getContext} from 'svelte';
-    import {setContent, toISOString} from '@event-calendar/core';
-    import {Section, Body, Day, Week} from '@event-calendar/time-grid';
+    import {setContent, toISOString} from '@kokoro-calendar/core';
+    import {Section, Body, Day, Week} from '@kokoro-calendar/time-grid';
     import Label from './Label.svelte';
 
     let {datesAboveResources, _viewDates, _viewResources, _intlDayHeader, _intlDayHeaderAL, allDaySlot, theme} = getContext('state');

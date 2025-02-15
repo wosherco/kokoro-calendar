@@ -1,5 +1,5 @@
-import {isFunction} from '@event-calendar/core';
-import {sortEventChunks} from '@event-calendar/core';
+import { isFunction } from '@kokoro-calendar/core';
+import { sortEventChunks } from '@kokoro-calendar/core';
 
 export function groupEventChunks(chunks) {
     if (!chunks.length) {
@@ -45,9 +45,9 @@ export function createAllDayContent(allDayContent) {
     let text = 'all-day';
     let content;
     if (allDayContent) {
-        content = isFunction(allDayContent) ? allDayContent({text}) : allDayContent;
+        content = isFunction(allDayContent) ? allDayContent({ text }) : allDayContent;
         if (typeof content === 'string') {
-            content = {html: content};
+            content = { html: content };
         }
     } else {
         content = {

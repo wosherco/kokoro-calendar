@@ -1,11 +1,11 @@
-import {btnTextDay, btnTextWeek, themeView} from '@event-calendar/core';
-import {slotTimeLimits, times} from './stores.js';
+import { btnTextDay, btnTextWeek, themeView } from '@kokoro-calendar/core';
+import { slotTimeLimits, times } from './stores.js';
 import View from './View.svelte';
 
-export {default as Section} from './Section.svelte';
-export {default as Body} from './Body.svelte';
-export {default as Day} from './Day.svelte';
-export {default as Week} from './all-day/Week.svelte';
+export { default as Section } from './Section.svelte';
+export { default as Body } from './Body.svelte';
+export { default as Day } from './Day.svelte';
+export { default as Week } from './all-day/Week.svelte';
 
 export default {
 	createOptions(options) {
@@ -16,15 +16,15 @@ export default {
 		options.views.timeGridDay = {
 			buttonText: btnTextDay,
 			component: View,
-			dayHeaderFormat: {weekday: 'long'},
-			duration: {days: 1},
+			dayHeaderFormat: { weekday: 'long' },
+			duration: { days: 1 },
 			theme: themeView('ec-time-grid ec-day-view'),
-			titleFormat: {year: 'numeric', month: 'long', day: 'numeric'}
+			titleFormat: { year: 'numeric', month: 'long', day: 'numeric' }
 		};
 		options.views.timeGridWeek = {
 			buttonText: btnTextWeek,
 			component: View,
-			duration: {weeks: 1},
+			duration: { weeks: 1 },
 			theme: themeView('ec-time-grid ec-week-view')
 		};
 	},

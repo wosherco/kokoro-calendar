@@ -20,11 +20,11 @@
   "jsdelivr": "event-calendar.min.js",
   "style": "event-calendar.min.css",
   "devDependencies": {
-    "@kokoro-calendar/day-grid": "~3.10.0",
-    "@kokoro-calendar/interaction": "~3.10.0",
-    "@kokoro-calendar/list": "~3.10.0",
-    "@kokoro-calendar/time-grid": "~3.10.0",
-    "@kokoro-calendar/resource-time-grid": "~3.10.0",
-    "@kokoro-calendar/resource-timeline": "~3.10.0"
+    "@kokoro-calendar/day-grid": "workspace:*",
+    "@kokoro-calendar/interaction": "workspace:*",
+    "@kokoro-calendar/list": "workspace:*",
+    "@kokoro-calendar/time-grid": "workspace:*",
+    "@kokoro-calendar/resource-time-grid": "workspace:*",
+    "@kokoro-calendar/resource-timeline": "workspace:*"
   }
 }

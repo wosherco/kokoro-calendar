@@ -27,8 +27,8 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@kokoro-calendar/core": "~3.10.0",
-    "@kokoro-calendar/time-grid": "~3.10.0",
+    "@kokoro-calendar/core": "workspace:*",
+    "@kokoro-calendar/time-grid": "workspace:*",
     "svelte": "^5.0.0"
   }
 }

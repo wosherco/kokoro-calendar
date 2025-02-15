@@ -27,7 +27,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@kokoro-calendar/core": "~3.10.0",
+    "@kokoro-calendar/core": "workspace:*",
     "svelte": "^5.0.0"
   }
 }

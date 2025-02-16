@@ -1,6 +1,11 @@
 /// <reference lib="es5" />
 /// <reference lib="dom" />
-import { ComponentConstructorOptions, Snippet, SvelteComponent } from "svelte";
+import {
+  Component,
+  ComponentConstructorOptions,
+  Snippet,
+  SvelteComponent,
+} from "svelte";
 
 export default Calendar;
 
@@ -329,7 +334,7 @@ declare namespace Calendar {
     eventColor?: string;
     eventContent?: Content | ((info: EventContentInfo) => Content | undefined);
     eventDidMount?: (info: EventDidMountInfo) => void;
-    eventWrapper?: Snippet<[EventWrapperProps]>;
+    eventWrapper?: Component<EventWrapperProps>;
     eventDragMinDistance?: number;
     eventDragStart?: (info: EventDragInfo) => void;
     eventDragStop?: (info: EventDragInfo) => void;

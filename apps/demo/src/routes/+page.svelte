@@ -1,4 +1,5 @@
 <script lang="ts">
+	import EventWrapper from "$lib/EventWrapper.svelte";
   import Calendar from "@kokoro-calendar/core";
   import DayGrid from "@kokoro-calendar/day-grid";
   import CalendarInteraction from "@kokoro-calendar/interaction";
@@ -39,7 +40,7 @@
     plugins: [TimeGrid, DayGrid, CalendarInteraction],
     options: {
       view: "timeGridWeek",
-      eventWrapper: eventWrapper,
+      eventWrapper: EventWrapper,
       events: createEvents(),
       buttonText: (texts) => ({
         ...texts,
@@ -69,15 +70,6 @@
     },
   };
 </script>
-
-{#snippet eventWrapper({event, timeText, view, children}: {event: Calendar.Event, timeText: string, view: Calendar.View, children: Snippet})}
-    <div onclick={() => {
-      alert("CLICKED EVENT2");
-    }}>
-      {@render children()}
-    </div>
-{/snippet}
-
 
 <main class="p-4">
   <h1 class="text-3xl font-bold">Kokoro Calendar Demo</h1>

@@ -108,6 +108,7 @@
     const onclick = $derived(createHandler($eventClick, display));
 
     const SvelteComponent = $derived($_interaction.resizer);
+    const EventWrapper = $derived(eventWrapper ? $eventWrapper : undefined);
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
@@ -137,13 +138,10 @@
     </article>
 {/snippet}
 
-{#if isFunction($eventWrapper)}
-    {@render $eventWrapper({
-        event,
-        timeText,
-        view: toViewWithLocalDates($_view),
-        children: eventComponent
-    })}
+{#if EventWrapper}
+    <EventWrapper {event} {timeText} view={toViewWithLocalDates($_view)}>
+        {@render eventComponent()}
+    </EventWrapper>
 {:else}
     {@render eventComponent()}
 {/if}

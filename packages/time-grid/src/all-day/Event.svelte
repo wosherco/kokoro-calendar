@@ -24,17 +24,14 @@
 
     let el;
     let event = $derived(chunk.event);
-    let classes;
-    let style;
     let margin = 1;
-    let display;
+    const display = $derived(event.display);
 
-    $effect(() => {
-        display = event.display;
-
+    const style = $derived.by(() => {
         // Class & Style
         let bgColor = event.backgroundColor || resourceBackgroundColor(event, $resources) || $eventBackgroundColor || $eventColor;
         let txtColor = event.textColor || resourceTextColor(event, $resources) || $eventTextColor;
+        let style = '';
         if (bgEvent(display)) {
             style = `width:calc(${chunk.days * 100}% + ${(chunk.days - 1)}px);`;
         } else {
@@ -51,12 +48,14 @@
         }
         style += event.styles.join(';');
 
-        classes = [
-            bgEvent(display) ? $theme.bgEvent : $theme.event,
-            ...$_iClasses([], event),
-            ...createEventClasses($eventClassNames, event, $_view)
-        ].join(' ');
+        return style;
     })
+
+    const classes = $derived([
+        bgEvent(display) ? $theme.bgEvent : $theme.event,
+        ...$_iClasses([], event),
+        ...createEventClasses($eventClassNames, event, $_view)
+    ].join(' '))
 
     // Content
     const [timeText, content] = $derived(createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view));

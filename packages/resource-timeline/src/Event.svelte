@@ -1,3 +1,4 @@
+<!-- TODO: Move to Svelte 5, and add support for eventWrapper -->
 <script>
     import {afterUpdate, getContext, onMount} from 'svelte';
     import {

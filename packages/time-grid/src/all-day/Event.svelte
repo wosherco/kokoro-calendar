@@ -113,7 +113,20 @@
 
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 {#snippet eventComponent()}
-    <article
+    
+        <SvelteComponent
+            start
+            {event}
+            onpointerdown={createDragHandler($_interaction, ['x', 'start'])}
+        />
+        <div class="{$theme.eventBody}" use:setContent={content}></div>
+        <SvelteComponent
+            {event}
+            onpointerdown={createDragHandler($_interaction, ['x', 'end'])}
+        />
+{/snippet}
+
+<article
         bind:this={el}
         class="{classes}"
         {style}
@@ -125,19 +138,6 @@
         onmouseleave={createHandler($eventMouseLeave, display)}
         onpointerdown={!helperEvent(display) && createDragHandler($_interaction)}
     >
-        <SvelteComponent
-            start
-            {event}
-            onpointerdown={createDragHandler($_interaction, ['x', 'start'])}
-        />
-        <div class="{$theme.eventBody}" use:setContent={content}></div>
-        <SvelteComponent
-            {event}
-            onpointerdown={createDragHandler($_interaction, ['x', 'end'])}
-        />
-    </article>
-{/snippet}
-
 {#if EventWrapper}
     <EventWrapper {event} {timeText} view={toViewWithLocalDates($_view)}>
         {@render eventComponent()}
@@ -145,3 +145,4 @@
 {:else}
     {@render eventComponent()}
 {/if}
+</article>

@@ -106,6 +106,18 @@
 </script>
 
 {#snippet eventComponent()}
+<SvelteComponent
+    start
+    {event}
+    onpointerdown={createDragHandler($_interaction, ['y', 'start'])}
+/>
+<div class="{$theme.eventBody}" use:setContent={content}></div>
+<SvelteComponent
+    {event}
+    onpointerdown={createDragHandler($_interaction, ['y', 'end'])}
+/>
+{/snippet}
+
 <article
 bind:this={el}
 class="{classes}"
@@ -118,19 +130,6 @@ onmouseenter={createHandler($eventMouseEnter, display)}
 onmouseleave={createHandler($eventMouseLeave, display)}
 onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
 >
-<SvelteComponent
-    start
-    {event}
-    onpointerdown={createDragHandler($_interaction, ['y', 'start'])}
-/>
-<div class="{$theme.eventBody}" use:setContent={content}></div>
-<SvelteComponent
-    {event}
-    onpointerdown={createDragHandler($_interaction, ['y', 'end'])}
-/>
-</article>
-{/snippet}
-
 {#if EventWrapper}
     <EventWrapper {event} {timeText} view={toViewWithLocalDates($_view)}>
         {@render eventComponent()}
@@ -138,3 +137,4 @@ onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($
 {:else}
     {@render eventComponent()}
 {/if}
+</article>

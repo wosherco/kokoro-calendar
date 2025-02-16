@@ -5,7 +5,7 @@
   const { event, timeText, view, children }: Calendar.EventWrapperProps = $props();
 </script>
 
-<div onclick={() => {
+<div class="border border-red-500 w-full" onclick={() => {
   alert("CLICKED EVENT2");
 }}>
   {@render children()}

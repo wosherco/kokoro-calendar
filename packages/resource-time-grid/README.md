@@ -1,4 +1,17 @@
-# Event Calendar [![](https://data.jsdelivr.com/v1/package/npm/@kokoro-calendar/build/badge)](https://www.jsdelivr.com/package/npm/@kokoro-calendar/build) [![npm](https://img.shields.io/npm/dm/@kokoro-calendar/core?color=red&label=npm&style=flat-square)](https://www.npmjs.com/package/@kokoro-calendar/core)
+# ❗️ This is a fork from [event-calender](https://github.com/vkurko/calendar)
+
+This fork is made to focus on Svelte rather than JS files to use anywhere. Things this fork does:
+
+- Move to Svelte 5
+- Adds `eventWrapper` to add snippets that wrap events (missing on `timeline` and `list` views)
+
+Bugs:
+
+- When resizing an event, the original event stays there instead of dissapearing
+
+### **Below this point is the original README.md from the event-calender project.**
+
+# Kokoro Calendar [![](https://data.jsdelivr.com/v1/package/npm/@kokoro-calendar/build/badge)](https://www.jsdelivr.com/package/npm/@kokoro-calendar/build) [![npm](https://img.shields.io/npm/dm/@kokoro-calendar/core?color=red&label=npm&style=flat-square)](https://www.npmjs.com/package/@kokoro-calendar/core)
 
 See [demo](https://vkurko.github.io/calendar/) and [changelog](CHANGELOG.md).
 

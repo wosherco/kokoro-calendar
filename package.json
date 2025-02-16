@@ -1,6 +1,6 @@
 {
   "name": "kokoro-calendar",
-  "version": "3.10.0",
+  "version": "5.0.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",

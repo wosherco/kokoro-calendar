@@ -25,7 +25,7 @@
         addDuration(start, slotTimeLimits.min);
         slotTimeLimits = getSlotTimeLimits($_dayTimeLimits, end);
         slotTimeLimits.max.seconds > DAY_IN_SECONDS
-            ? addDuration(end, slotTimeLimits.max)  /** @see https://github.com/vkurko/calendar/issues/333 */
+            ? addDuration(end, slotTimeLimits.max)  /** @see https://github.com/wosherco/kokoro-calendar/issues/333 */
             : addDay(end);
     }
 

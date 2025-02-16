@@ -1,4 +1,4 @@
-import {hasPayload} from './payload.js';
+import { hasPayload } from './payload.js';
 
 export function createElement(tag, className, content, attrs = []) {
     let el = document.createElement(tag);
@@ -40,7 +40,7 @@ export function getElementWithPayload(x, y, root = document) {
         if (hasPayload(el)) {
             return el;
         }
-        /** @see https://github.com/vkurko/calendar/issues/142 */
+        /** @see https://github.com/wosherco/kokoro-calendar/issues/142 */
         if (el.shadowRoot) {
             let shadowEl = getElementWithPayload(x, y, el.shadowRoot);
             if (shadowEl) {

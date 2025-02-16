@@ -1,7 +1,7 @@
-import {addDay, addDuration, datesEqual, createDate, cloneDate, setMidnight, toLocalDate, toISOString, noTimePart, copyTime} from './date';
-import {createElement} from './dom';
-import {assign, isArray, isFunction} from './utils';
-import {toViewWithLocalDates} from './view';
+import { addDay, addDuration, datesEqual, createDate, cloneDate, setMidnight, toLocalDate, toISOString, noTimePart, copyTime } from './date';
+import { createElement } from './dom';
+import { assign, isArray, isFunction } from './utils';
+import { toViewWithLocalDates } from './view';
 
 let eventId = 1;
 export function createEvents(input) {
@@ -31,7 +31,7 @@ export function createEvents(input) {
             setMidnight(result.end);
             if (
                 !datesEqual(result.end, end) ||
-                datesEqual(result.end, result.start)  /** @see https://github.com/vkurko/calendar/issues/50 */
+                datesEqual(result.end, result.start)  /** @see https://github.com/wosherco/kokoro-calendar/issues/50 */
             ) {
                 addDay(result.end);
             }
@@ -105,7 +105,7 @@ export function createEventContent(chunk, displayEventEnd, eventContent, theme, 
                     createElement('h4', theme.eventTitle, chunk.event.title)
                 ];
         }
-        content = {domNodes};
+        content = { domNodes };
     }
 
     return [timeText, content];

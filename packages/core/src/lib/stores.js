@@ -1,13 +1,13 @@
-import {derived} from 'svelte/store';
-import {isFunction} from './utils.js';
-import {toLocalDate} from './date';
-import {createResources} from './resources.js';
-import {getPayload} from './payload.js';
+import { derived } from 'svelte/store';
+import { isFunction } from './utils.js';
+import { toLocalDate } from './date';
+import { createResources } from './resources.js';
+import { getPayload } from './payload.js';
 
 export function intl(locale, format) {
     return derived([locale, format], ([$locale, $format]) => {
         let intl = isFunction($format)
-            ? {format: $format}
+            ? { format: $format }
             : new Intl.DateTimeFormat($locale, $format);
         return {
             format: date => intl.format(toLocalDate(date))
@@ -28,7 +28,7 @@ export function intlRange(locale, format) {
                 } else {
                     // In iOS 16 and older, intl.formatRange() throws an exception if the start date is later than the end date.
                     // Therefore, we first swap the parameters, and then swap the resulting parts.
-                    /** @see https://github.com/vkurko/calendar/issues/227 */
+                    /** @see https://github.com/wosherco/kokoro-calendar/issues/227 */
                     let parts = intl.formatRangeToParts(end, start);
                     let result = '';
                     let sources = ['startRange', 'endRange'];

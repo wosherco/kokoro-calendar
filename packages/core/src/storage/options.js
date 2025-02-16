@@ -22,7 +22,7 @@ export function createOptions(plugins) {
             dateStyle: 'full'
         },
         displayEventEnd: true,
-        duration: {weeks: 1},
+        duration: { weeks: 1 },
         events: [],
         eventAllUpdated: undefined,
         eventBackgroundColor: undefined,
@@ -34,6 +34,7 @@ export function createOptions(plugins) {
         eventDidMount: undefined,
         eventMouseEnter: undefined,
         eventMouseLeave: undefined,
+        eventWrapper: undefined,
         eventSources: [],
         eventTimeFormat: {
             hour: 'numeric',

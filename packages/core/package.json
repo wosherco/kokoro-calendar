@@ -22,7 +22,8 @@
   "exports": {
     ".": {
       "svelte": "./src/index.svelte.js",
-      "default": "./index.js"
+      "default": "./index.js",
+      "types": "./types/index.d.ts"
     },
     "./index.css": "./index.css",
     "./package.json": "./package.json"

@@ -138,9 +138,13 @@
     </article>
 {/snippet}
 
-{@render eventWrapper({
-    event,
-    timeText,
-    view: toViewWithLocalDates($_view),
-    children: eventComponent
-})}
+{#if isFunction($eventWrapper)}
+    {@render $eventWrapper({
+        event,
+        timeText,
+        view: toViewWithLocalDates($_view),
+        children: eventComponent
+    })}
+{:else}
+    {@render eventComponent()}
+{/if}

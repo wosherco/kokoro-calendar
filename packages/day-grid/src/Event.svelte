@@ -1,5 +1,5 @@
 <script>
-    import {getContext, onMount, SvelteComponent, tick} from 'svelte';
+    import {getContext, onMount, tick} from 'svelte';
     import {
         ancestor,
         createEventClasses,
@@ -167,6 +167,8 @@
 
     // Onclick handler
     const onclick = $derived(!helperEvent(display) && createHandler($eventClick, display));
+
+    const SvelteComponent = $derived($_interaction.resizer);
 </script>
 
 {#snippet eventComponent()}
@@ -184,23 +186,25 @@
     onpointerdown={!helperEvent(display) && createDragHandler($_interaction)}
 >
     <SvelteComponent
-        this={$_interaction.resizer}
         start
         {event}
         onpointerdown={createDragHandler($_interaction, ['x', 'start'])}
     />
     <div class="{$theme.eventBody}" use:setContent={content}></div>
     <SvelteComponent
-        this={$_interaction.resizer}
         {event}
         onpointerdown={createDragHandler($_interaction, ['x', 'end'])}
     />
 </article>
 {/snippet}
 
-{@render eventWrapper({
-    event,
-    timeText,
-    view: toViewWithLocalDates($_view),
-    children: eventComponent
-})}
+{#if isFunction($eventWrapper)}
+    {@render $eventWrapper({
+        event,
+        timeText,
+        view: toViewWithLocalDates($_view),
+        children: eventComponent
+    })}
+{:else}
+    {@render eventComponent()}
+{/if}

@@ -1,6 +1,6 @@
-import {get, writable} from 'svelte/store';
-import {tick} from 'svelte';
-import {createOptions, createParsers} from './options';
+import { get, writable } from 'svelte/store';
+import { tick } from 'svelte';
+import { createOptions, createParsers } from './options';
 import {
     activeRange,
     currentRange,
@@ -12,7 +12,7 @@ import {
     viewTitle,
     view as view2  // hack to avoid a runtime error in SvelteKit dev mode (ReferenceError: view is not defined)
 } from './stores';
-import {keys, intl, intlRange, isFunction, identity} from '../lib.js';
+import { keys, intl, intlRange, isFunction, identity } from '../lib.js';
 
 export default class {
     constructor(plugins, input) {
@@ -39,7 +39,7 @@ export default class {
         this._dayGrid = dayGrid(this);
         this._currentRange = currentRange(this);
         this._activeRange = activeRange(this);
-        this._fetchedRange = writable({start: undefined, end: undefined});
+        this._fetchedRange = writable({ start: undefined, end: undefined });
         this._events = events(this);
         this._now = now();
         this._today = today(this);
@@ -91,7 +91,7 @@ export default class {
             filterOpts(opts, this);
             // Process options
             for (let key of keys(opts)) {
-                let {set, _set = set, ...rest} = this[key];
+                let { set, _set = set, ...rest } = this[key];
 
                 this[key] = {
                     // Set value in all views
@@ -133,7 +133,7 @@ export default class {
 }
 
 function parseOpts(opts, parsers) {
-    let result = {...opts};
+    let result = { ...opts };
     for (let key of keys(parsers)) {
         if (key in result) {
             result[key] = parsers[key](result[key]);

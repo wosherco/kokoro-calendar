@@ -13,15 +13,11 @@
         _view, _intlEventTime, _interaction, _iClasses, _slotTimeLimits, _tasks} = getContext('state');
 
     let el;
-    let display = $state(false);
-    let classes = $state([]);
-    let style = $state('');
 
     const event = $derived(chunk.event);
+    const display = $derived(event.display);
 
-    $effect(() => {
-        display = event.display;
-
+    const style = $derived.by(() => {
         // Style
         let step = $slotDuration.seconds;
         let offset = $_slotTimeLimits.min.seconds;
@@ -32,7 +28,7 @@
         let maxHeight = ($_slotTimeLimits.max.seconds - start) / step * $slotHeight;
         let bgColor = event.backgroundColor || resourceBackgroundColor(event, $resources) || $eventBackgroundColor || $eventColor;
         let txtColor = event.textColor || resourceTextColor(event, $resources) || $eventTextColor;
-        style =
+        let style =
             `top:${top}px;` +
             `min-height:${height}px;` +
             `height:${height}px;` +
@@ -53,13 +49,14 @@
         }
         style += event.styles.join(';');
 
-        // Class
-        classes = [
-            bgEvent(display) ? $theme.bgEvent : $theme.event,
-            ...$_iClasses([], event),
-            ...createEventClasses($eventClassNames, event, $_view)
-        ].join(' ');
+        return style;
     })
+
+    const classes = $derived([
+        bgEvent(display) ? $theme.bgEvent : $theme.event,
+        ...$_iClasses([], event),
+        ...createEventClasses($eventClassNames, event, $_view)
+    ].join(' '))
 
     // Content
     const [timeText, content] = $derived(createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view));
@@ -103,6 +100,8 @@
 
     // Onclick handler
     const onclick = $derived(!bgEvent(display) && createHandler($eventClick, display));
+
+    const SvelteComponent = $derived($_interaction.resizer);
 </script>
 
 {#snippet eventComponent()}
@@ -119,23 +118,25 @@ onmouseleave={createHandler($eventMouseLeave, display)}
 onpointerdown={!bgEvent(display) && !helperEvent(display) && createDragHandler($_interaction)}
 >
 <SvelteComponent
-    this={$_interaction.resizer}
     start
     {event}
     onpointerdown={createDragHandler($_interaction, ['y', 'start'])}
 />
 <div class="{$theme.eventBody}" use:setContent={content}></div>
 <SvelteComponent
-    this={$_interaction.resizer}
     {event}
     onpointerdown={createDragHandler($_interaction, ['y', 'end'])}
 />
 </article>
 {/snippet}
 
-{@render eventWrapper({
-    event,
-    timeText,
-    view: toViewWithLocalDates($_view),
-    children: eventComponent
-})}
+{#if isFunction($eventWrapper)}
+    {@render $eventWrapper({
+        event,
+        timeText,
+        view: toViewWithLocalDates($_view),
+        children: eventComponent
+    })}
+{:else}
+    {@render eventComponent()}
+{/if}

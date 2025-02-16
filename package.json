@@ -1,12 +1,13 @@
 {
   "name": "kokoro-calendar",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
     "set-version": "node ./scripts/set-version.cjs",
-    "publish": "node ./scripts/publish.cjs"
+    "prepub": "pnpm run set-version",
+    "pub": "node ./scripts/publish.cjs"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

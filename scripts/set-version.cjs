@@ -1,12 +1,8 @@
 const fs = require('fs');
 
-const args = process.argv.slice(2);
-if (!args.length) {
-    console.log('Error: Version is missing');
-    return;
-}
-
-const version = args[0];
+// Read version from root package.json
+const rootPackage = require('../package.json');
+const version = rootPackage.version;
 const packages = require('./packages.json');
 
 let dir = __dirname + '/..';

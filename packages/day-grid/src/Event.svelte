@@ -1,5 +1,5 @@
 <script>
-    import {afterUpdate, getContext, onMount} from 'svelte';
+    import {getContext, onMount, SvelteComponent, tick} from 'svelte';
     import {
         ancestor,
         createEventClasses,
@@ -20,29 +20,22 @@
         isFunction
     } from '@kokoro-calendar/core';
 
-    export let chunk;
-    export let longChunks = {};
-    export let inPopup = false;
-    export let dates = [];
+    const {chunk, longChunks, inPopup, dates} = $props();
 
     let {dayMaxEvents, displayEventEnd, eventAllUpdated, eventBackgroundColor, eventTextColor, eventClick, eventColor,
-        eventContent, eventClassNames, eventDidMount, eventMouseEnter, eventMouseLeave, resources, theme,
+        eventContent, eventClassNames, eventDidMount, eventWrapper, eventMouseEnter, eventMouseLeave, resources, theme,
         _view, _intlEventTime, _interaction, _iClasses, _hiddenEvents, _popupDate, _tasks} = getContext('state');
 
     let el;
-    let event;
-    let classes;
-    let style;
-    let content;
-    let timeText;
+    let classes = $state([]);
+    let style = $state('');
     let margin = 1;
     let hidden = false;
-    let display;
-    let onclick;
+    let display = $state(false);
 
-    $: event = chunk.event;
+    const event = $derived(chunk.event);
 
-    $: {
+    $effect(() => {
         display = event.display;
 
         // Class & Style
@@ -79,10 +72,10 @@
             ...$_iClasses([], event),
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
-    }
+    });
 
     // Content
-    $: [timeText, content] = createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view);
+    const [timeText, content] = $derived(createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view));
 
     onMount(() => {
         if (isFunction($eventDidMount)) {
@@ -95,7 +88,9 @@
         }
     });
 
-    afterUpdate(() => {
+    $effect(async () => {
+        await tick();
+
         if (isFunction($eventAllUpdated) && !helperEvent(display)) {
             task(() => $eventAllUpdated({view: toViewWithLocalDates($_view)}), 'eau', _tasks);
         }
@@ -171,9 +166,10 @@
     }
 
     // Onclick handler
-    $: onclick = createHandler($eventClick, display);
+    const onclick = $derived(!helperEvent(display) && createHandler($eventClick, display));
 </script>
 
+{#snippet eventComponent()}
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <article
     bind:this={el}
@@ -181,22 +177,30 @@
     {style}
     role="{onclick ? 'button' : undefined}"
     tabindex="{onclick ? 0 : undefined}"
-    on:click={onclick || undefined}
-    on:keydown={onclick && keyEnter(onclick)}
-    on:mouseenter={createHandler($eventMouseEnter, display)}
-    on:mouseleave={createHandler($eventMouseLeave, display)}
-    on:pointerdown={!helperEvent(display) && createDragHandler($_interaction)}
+    onclick={onclick || undefined}
+    onkeydown={onclick && keyEnter(onclick)}
+    onmouseenter={createHandler($eventMouseEnter, display)}
+    onmouseleave={createHandler($eventMouseLeave, display)}
+    onpointerdown={!helperEvent(display) && createDragHandler($_interaction)}
 >
-    <svelte:component
+    <SvelteComponent
         this={$_interaction.resizer}
         start
         {event}
-        on:pointerdown={createDragHandler($_interaction, ['x', 'start'])}
+        onpointerdown={createDragHandler($_interaction, ['x', 'start'])}
     />
     <div class="{$theme.eventBody}" use:setContent={content}></div>
-    <svelte:component
+    <SvelteComponent
         this={$_interaction.resizer}
         {event}
-        on:pointerdown={createDragHandler($_interaction, ['x', 'end'])}
+        onpointerdown={createDragHandler($_interaction, ['x', 'end'])}
     />
 </article>
+{/snippet}
+
+{@render eventWrapper({
+    event,
+    timeText,
+    view: toViewWithLocalDates($_view),
+    children: eventComponent
+})}

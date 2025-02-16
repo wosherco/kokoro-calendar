@@ -149,6 +149,7 @@ declare namespace Calendar {
     event: Event;
     timeText: string;
     view: View;
+    children: Snippet;
   }
 
   interface ResourceDidMountInfo {

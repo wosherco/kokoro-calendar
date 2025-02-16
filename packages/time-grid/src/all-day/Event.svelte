@@ -1,5 +1,5 @@
 <script>
-    import {afterUpdate, getContext, onMount} from 'svelte';
+    import {getContext, onMount} from 'svelte';
     import {
         createEventClasses,
         createEventContent,
@@ -16,26 +16,20 @@
         isFunction
     } from '@kokoro-calendar/core';
 
-    export let chunk;
-    export let longChunks = {};
+    const {chunk, longChunks} = $props();
 
     let {displayEventEnd, eventAllUpdated, eventBackgroundColor, eventTextColor, eventClick, eventColor, eventContent,
-        eventClassNames, eventDidMount, eventMouseEnter, eventMouseLeave, resources, theme,
+        eventClassNames, eventDidMount, eventWrapper, eventMouseEnter, eventMouseLeave, resources, theme,
         _view, _intlEventTime, _interaction, _iClasses, _tasks} = getContext('state');
 
     let el;
-    let event;
+    let event = $derived(chunk.event);
     let classes;
     let style;
-    let content;
-    let timeText;
     let margin = 1;
     let display;
-    let onclick;
 
-    $: event = chunk.event;
-
-    $: {
+    $effect(() => {
         display = event.display;
 
         // Class & Style
@@ -62,10 +56,10 @@
             ...$_iClasses([], event),
             ...createEventClasses($eventClassNames, event, $_view)
         ].join(' ');
-    }
+    })
 
     // Content
-    $: [timeText, content] = createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view);
+    const [timeText, content] = $derived(createEventContent(chunk, $displayEventEnd, $eventContent, $theme, $_intlEventTime, $_view));
 
     onMount(() => {
         if (isFunction($eventDidMount)) {
@@ -78,11 +72,12 @@
         }
     });
 
-    afterUpdate(() => {
+    $effect(async() => {
+        await tick();
         if (isFunction($eventAllUpdated) && !helperEvent(display)) {
             task(() => $eventAllUpdated({view: toViewWithLocalDates($_view)}), 'eau', _tasks);
         }
-    });
+    })
 
     function createHandler(fn, display) {
         return !helperEvent(display) && isFunction(fn)
@@ -111,32 +106,41 @@
     }
 
     // Onclick handler
-    $: onclick = createHandler($eventClick, display);
+    const onclick = $derived(createHandler($eventClick, display));
+
+    const SvelteComponent = $derived($_interaction.resizer);
 </script>
 
-<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-<article
-    bind:this={el}
-    class="{classes}"
-    {style}
-    role="{onclick ? 'button' : undefined}"
-    tabindex="{onclick ? 0 : undefined}"
-    on:click={onclick}
-    on:keydown={onclick && keyEnter(onclick)}
-    on:mouseenter={createHandler($eventMouseEnter, display)}
-    on:mouseleave={createHandler($eventMouseLeave, display)}
-    on:pointerdown={!helperEvent(display) && createDragHandler($_interaction)}
->
-    <svelte:component
-        this={$_interaction.resizer}
-        start
-        {event}
-        on:pointerdown={createDragHandler($_interaction, ['x', 'start'])}
-    />
-    <div class="{$theme.eventBody}" use:setContent={content}></div>
-    <svelte:component
-        this={$_interaction.resizer}
-        {event}
-        on:pointerdown={createDragHandler($_interaction, ['x', 'end'])}
-    />
-</article>
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+{#snippet eventComponent()}
+    <article
+        bind:this={el}
+        class="{classes}"
+        {style}
+        role="{onclick ? 'button' : undefined}"
+        tabindex="{onclick ? 0 : undefined}"
+        {onclick}
+        onkeydown={onclick && keyEnter(onclick)}
+        onmouseenter={createHandler($eventMouseEnter, display)}
+        onmouseleave={createHandler($eventMouseLeave, display)}
+        onpointerdown={!helperEvent(display) && createDragHandler($_interaction)}
+    >
+        <SvelteComponent
+            start
+            {event}
+            onpointerdown={createDragHandler($_interaction, ['x', 'start'])}
+        />
+        <div class="{$theme.eventBody}" use:setContent={content}></div>
+        <SvelteComponent
+            {event}
+            onpointerdown={createDragHandler($_interaction, ['x', 'end'])}
+        />
+    </article>
+{/snippet}
+
+{@render eventWrapper({
+    event,
+    timeText,
+    view: toViewWithLocalDates($_view),
+    children: eventComponent
+})}

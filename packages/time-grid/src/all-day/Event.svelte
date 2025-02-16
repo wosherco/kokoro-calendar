@@ -1,5 +1,5 @@
 <script>
-    import {getContext, onMount} from 'svelte';
+    import {getContext, onMount, tick} from 'svelte';
     import {
         createEventClasses,
         createEventContent,
